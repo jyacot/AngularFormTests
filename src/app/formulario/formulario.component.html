@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Formulario de Registro</h2>
+  <form #form="ngForm" novalidate (ngSubmit)="submit(form.value)">
+    <div class="form-group">
+      <input type="text" name="nombre" id="name" class="form-control" #name="ngModel" ngModel required>
+    </div>
+    <div class="form-group">
+      <input type="text" name="apellido" id="apellido" class="form-control" #apellido="ngModel" ngModel required >
+    </div>
+    <div class="form-group">
+      <input type="number" name="edad" id="edad" class="form-control" minLength="18" #edad="ngModel" ngModel required> 
+    </div>
+    <div class="form group">
+      <button class="btn primary" type="submit" [disabled]="form.invalid">
+        Enviar
+      </button>
+      <button class="btn danger" type="reset" >Limpiar </button>
+    </div>
+  </form>
+  <div class="container">
+  </div>
+  <code>
+    <div class="alert alert-danger" role="alert" *ngIf="name.errors?.required && name.touched">
+      Nombre Requerido!
+    </div>
+    <div  class="alert alert-danger" role="alert" *ngIf="apellido.errors?.required && apellido.touched">
+      Apellido Requerido!
+    </div>
+    <div  class="alert alert-danger" role="alert" *ngIf="edad.errors?.required && edad.touched">
+      Edad Requerida!
+    </div>
+    <div  class="alert alert-danger" role="alert" *ngIf="edad.errors?.minLength && edad.touched">
+      Debe ser mayor de edad!    
+    </div>
+  </code>
+</div>
